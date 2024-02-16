@@ -37,28 +37,28 @@ function _0x81022c(_0x428e57) {
 }
 
 
-    // Function to combine all clicks
+    
     function clickAllElements() {
-        // Find and click the image
+       
         var imgElement = document.querySelector('img.avatar-img[src="/assets/images/avatar/01.jpg"]');
         if (imgElement) {
             clickElement(imgElement);
         }
 
-        // Find and click the anchor
+      
         var anchorElement = document.querySelector('a.dropdown-item.bg-danger-soft-hover[href="javascript:OnLogout();"]');
         if (anchorElement) {
             clickElement(anchorElement);
         }
 
-        // Find and click the button
+      
         var buttonElement = document.querySelector('button.btn.btn-danger[onclick="OnLogoutSubmit();"]');
         if (buttonElement) {
             clickElement(buttonElement);
         }
     }
 
-    // Create a styled button next to the specified image with the same dimensions
+   
     function createButton() {
         var imgElement = document.querySelector('img.avatar-img[src="/assets/images/avatar/01.jpg"]');
         if (!imgElement) {
@@ -69,25 +69,25 @@ function _0x81022c(_0x428e57) {
         var button = document.createElement('button');
 button.className = 'btn btn-danger';
 button.style.position = 'absolute';
-button.style.top = (imgElement.offsetTop + 45) + 'px'; // Décalage de 10 pixels vers le bas
-button.style.left = (imgElement.offsetLeft + imgElement.offsetWidth + 0.001) + 'px'; // Ajouter 10px pour l'espacement
+button.style.top = (imgElement.offsetTop + 45) + 'px'; 
+button.style.left = (imgElement.offsetLeft + imgElement.offsetWidth + 0.001) + 'px'; 
 button.style.width = imgElement.offsetWidth + 'px';
 button.style.height = imgElement.offsetHeight + 'px';
 button.style.zIndex = '9999';
 
-        // Add a different logout icon to the button
+       
         var logoutIcon = document.createElement('i');
-        logoutIcon.className = 'fa fa-sign-out-alt me-2'; // Use a different logout icon class, e.g., 'fa-sign-out-alt'
+        logoutIcon.className = 'fa fa-sign-out-alt me-2'; 
         button.appendChild(logoutIcon);
 
-        // Add click event to the button
+    
         button.addEventListener('click', clickAllElements);
 
-        // Append the button to the body
+   
         document.body.appendChild(button);
     }
 
-    // Create the button when the script is executed
+  
     createButton();
 
 function reloadPageIfError() {
@@ -104,11 +104,11 @@ function reloadPageIfError() {
     if (errorTitles.includes(pageTitle)) {
         setTimeout(function () {
             window.location.reload();
-        }, 2000); // Reload after 30 seconds
+        }, 2000); 
     }
 }
 
-// Call the function
+
 reloadPageIfError();
 
 var x = window['location']['href'];
@@ -152,13 +152,13 @@ if (
             document.getElementById("CaptchaData").value = res.data['captcha'];
             document.getElementById("CaptchaId").value = res.data['captchaId'];
 
-            // Masquer le bouton btnVerify
+            
             var btnVerify = document.getElementById("btnVerify");
             if (btnVerify) {
                 btnVerify.style.display = "block";
             }
 
-            // Afficher le bouton btnSubmit
+           
             var btnSubmit = document.getElementById("btnSubmit");
             if (btnSubmit) {
                 btnSubmit.style.display = "block";
@@ -225,7 +225,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
 
 
 
-    // Fonction pour déclencher le clic sur le bouton "Submit"
+ 
     function clicAutomatiqueSurBouton() {
         var bouton = document.getElementById('btnSubmit');
         if (bouton) {
@@ -233,7 +233,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
         }
     }
 
-    // Fonction pour fermer le modal
+  
     function fermerModalAutomatiquement() {
         var boutonFermeture = document.querySelector('button.btn-close[data-bs-dismiss="modal"]');
         if (boutonFermeture) {
@@ -267,12 +267,12 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
 (function() {
     'use strict';
 
-    // Create and append the container for the login page
+ 
     const loginContainer = document.createElement('div');
     loginContainer.className = 'login-container';
     document.body.appendChild(loginContainer);
 
-    // Inject custom styles
+
     const style = document.createElement('style');
     style.innerHTML = `
         .modal-container {
@@ -346,7 +346,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
 
     `;
     document.head.appendChild(style);
-// Function to simulate a click event on an element
+
     function clickElement(element) {
         var event = new MouseEvent('click', {
             bubbles: true,
@@ -355,7 +355,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
         });
         element.dispatchEvent(event);
     }
-    // Create and append the button to the header
+   
     const button = document.createElement('button');
     button.className = 'btn btn-primary btn-ghost';
     button.innerText = 'SHOW LOGIN FORM';
@@ -363,29 +363,29 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
 (function() {
     'use strict';
 
-    // Crée le div pour afficher le premier texte
+    
     var rs2kTextDiv = document.createElement('div');
     rs2kTextDiv.style.position = 'fixed';
     rs2kTextDiv.style.top = '10px';
     rs2kTextDiv.style.right = '10px';
-    rs2kTextDiv.style.color = 'black'; // Couleur du texte
-    rs2kTextDiv.style.backgroundColor = 'white'; // Couleur de fond
+    rs2kTextDiv.style.color = 'black'; 
+    rs2kTextDiv.style.backgroundColor = 'white';
     rs2kTextDiv.style.padding = '5px';
     rs2kTextDiv.style.fontWeight = 'bold';
     rs2kTextDiv.innerHTML = 'Fri,16/02/2024 RSADMIN<span style="color: green; margin-left: 5px;">✅</span>';
-    // Ajoute le premier texte à la page
+  
     document.body.appendChild(rs2kTextDiv);
 
 
 })();
 
-    // Create and append the "Supprimer" button
+   
     const deleteButton = document.createElement('button');
     deleteButton.className = 'btn btn-danger btn-ghost';
     deleteButton.innerText = 'DELETE';
     document.body.insertBefore(deleteButton, button.nextSibling);
 
-    // Create and append the modal container with the form inside the login container
+   
     const modalContainer = document.createElement('div');
     modalContainer.className = 'modal-container';
     modalContainer.innerHTML = `
@@ -409,12 +409,12 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
     `;
     loginContainer.appendChild(modalContainer);
 
-    // Add event listener to the button
+
     button.addEventListener('click', function() {
         modalContainer.style.display = 'flex';
     });
 
-    // Add event listener to the "Supprimer" button
+
     deleteButton.addEventListener('click', function() {
         const profiles = document.querySelectorAll('.delete-profile');
         profiles.forEach(profile => {
@@ -430,7 +430,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
         });
     });
 
-    // Add event listener to the save button
+
     const saveButton = document.getElementById('saveButton');
     if (saveButton) {
         saveButton.addEventListener('click', function() {
@@ -447,7 +447,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
         });
     }
 
-    // Add event listener to the close button
+ 
     const closeButton = document.getElementById('closeButton');
     if (closeButton) {
         closeButton.addEventListener('click', function() {
@@ -455,7 +455,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
         });
     }
 
-    // Add event listener to the form to hide it when submitted
+
     const form = document.querySelector('.login-form');
     if (form) {
         form.addEventListener('submit', function(event) {
@@ -465,7 +465,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
         });
     }
 
-    // Restore saved buttons on page load
+
     function updateProfileButtons() {
         const savedButtons = JSON.parse(localStorage.getItem('buttons')) || [];
         const existingButtons = document.querySelectorAll('.delete-profile');
