@@ -221,53 +221,29 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
         if (variabLe_4 == "Location" + i + "_label") {
             $("#Location" + i + "_listbox > li:eq(1)").click();
         }
-    }
-
-
-
- 
-    function clicAutomatiqueSurBouton() {
-        var bouton = document.getElementById('btnSubmit');
-        if (bouton) {
-            bouton.click();
-        }
-    }
-
-  
-    function fermerModalAutomatiquement() {
-        var boutonFermeture = document.querySelector('button.btn-close[data-bs-dismiss="modal"]');
-        if (boutonFermeture) {
-            boutonFermeture.click();
-        }
-    }
-
-
-
+    } 
+   'use strict';
+window.addEventListener('load', function() {
+setTimeout(function() {
+ var okButton = document.querySelector('button.btn.btn-primary[data-bs-dismiss="modal"]');
+if (okButton) {
+okButton.click();
+} else {
+console.log('Le bouton "Ok" n\'a pas été trouvé.');
+}
+}, 2000);
+});
+}
  }
-
  if(location.href.match(/ManageAppointment/)){
-
-
-
-
-
  }
-
   if(location.href.match(/livenessdetection/)){
-
     //  $('script[src="/assets/vendor/bioid/js/startVideo().js?v=cYV2_QtkS9WSeWhabBLqSPxCFEFAVxkA7oHJZH3HYKQ"]').remove();
     //  $('script').remove()
-
  }
-
-
  $(window).scrollTop( 180 );
-
-
 (function() {
     'use strict';
-
- 
     const loginContainer = document.createElement('div');
     loginContainer.className = 'login-container';
     document.body.appendChild(loginContainer);
