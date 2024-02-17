@@ -1,64 +1,37 @@
-function _0x81022c(_0x428e57) {
-          $('#' + _0x428e57).removeAttr("readonly");
-          var _0x35ca65 = $('#' + _0x428e57).data("kendoDropDownList");
-          if (_0x35ca65) {
-            var _0x325da0 = {
-              autoBind: false
-            };
-            _0x35ca65.setOptions(_0x325da0);
-          }
-          _0x35ca65.bind("change", function (_0x5947f7) {
-            _0x2209dc();
-          });
-        }
-        if ($("#MissionId").length > 0) {
-          _0x81022c("MissionId");
-        }
-        if ($("#LocationId").length > 0) {
-          _0x81022c("LocationId");
-        }
-        if ($("#VisaType").length > 0) {
-          _0x81022c("VisaType");
-        }
-        if ($("#VisaSubTypeId").length > 0) {
-          _0x81022c("VisaSubTypeId");
-        }
-        if ($("#AppointmentCategoryId").length > 0) {
-          _0x81022c("AppointmentCategoryId");
-        }
+
 
 (function() {
     'use strict';
 
     function clickElement(element) {
-    var event = document.createEvent('MouseEvents');
-    event.initEvent('click', true, true);
-    element.dispatchEvent(event);
-}
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        element.dispatchEvent(event);
+    }
 
 
-    
+    // Function to combine all clicks
     function clickAllElements() {
-       
+        // Find and click the image
         var imgElement = document.querySelector('img.avatar-img[src="/assets/images/avatar/01.jpg"]');
         if (imgElement) {
             clickElement(imgElement);
         }
 
-      
+        // Find and click the anchor
         var anchorElement = document.querySelector('a.dropdown-item.bg-danger-soft-hover[href="javascript:OnLogout();"]');
         if (anchorElement) {
             clickElement(anchorElement);
         }
 
-      
+        // Find and click the button
         var buttonElement = document.querySelector('button.btn.btn-danger[onclick="OnLogoutSubmit();"]');
         if (buttonElement) {
             clickElement(buttonElement);
         }
     }
 
-   
+    // Create a styled button next to the specified image with the same dimensions
     function createButton() {
         var imgElement = document.querySelector('img.avatar-img[src="/assets/images/avatar/01.jpg"]');
         if (!imgElement) {
@@ -66,28 +39,29 @@ function _0x81022c(_0x428e57) {
             return;
         }
 
+
         var button = document.createElement('button');
 button.className = 'btn btn-danger';
 button.style.position = 'absolute';
-button.style.top = (imgElement.offsetTop + 45) + 'px'; 
-button.style.left = (imgElement.offsetLeft + imgElement.offsetWidth + 0.001) + 'px'; 
+button.style.top = (imgElement.offsetTop + 45) + 'px'; // Décalage de 10 pixels vers le bas
+button.style.left = (imgElement.offsetLeft + imgElement.offsetWidth + 0.001) + 'px'; // Ajouter 10px pour l'espacement
 button.style.width = imgElement.offsetWidth + 'px';
 button.style.height = imgElement.offsetHeight + 'px';
 button.style.zIndex = '9999';
 
-       
+        // Add a different logout icon to the button
         var logoutIcon = document.createElement('i');
-        logoutIcon.className = 'fa fa-sign-out-alt me-2'; 
+        logoutIcon.className = 'fa fa-sign-out-alt me-2'; // Use a different logout icon class, e.g., 'fa-sign-out-alt'
         button.appendChild(logoutIcon);
 
-    
+        // Add click event to the button
         button.addEventListener('click', clickAllElements);
 
-   
+        // Append the button to the body
         document.body.appendChild(button);
     }
 
-  
+    // Create the button when the script is executed
     createButton();
 
 function reloadPageIfError() {
@@ -104,11 +78,11 @@ function reloadPageIfError() {
     if (errorTitles.includes(pageTitle)) {
         setTimeout(function () {
             window.location.reload();
-        }, 2000); 
+        }, 2000); // Reload after 30 seconds
     }
 }
 
-
+// Call the function
 reloadPageIfError();
 
 var x = window['location']['href'];
@@ -152,13 +126,13 @@ if (
             document.getElementById("CaptchaData").value = res.data['captcha'];
             document.getElementById("CaptchaId").value = res.data['captchaId'];
 
-            
+            // Masquer le bouton btnVerify
             var btnVerify = document.getElementById("btnVerify");
             if (btnVerify) {
                 btnVerify.style.display = "block";
             }
 
-           
+            // Afficher le bouton btnSubmit
             var btnSubmit = document.getElementById("btnSubmit");
             if (btnSubmit) {
                 btnSubmit.style.display = "block";
@@ -221,8 +195,10 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
         if (variabLe_4 == "Location" + i + "_label") {
             $("#Location" + i + "_listbox > li:eq(1)").click();
         }
-    } 
-   'use strict';
+    }
+
+
+'use strict';
 window.addEventListener('load', function() {
 setTimeout(function() {
  var okButton = document.querySelector('button.btn.btn-primary[data-bs-dismiss="modal"]');
@@ -234,24 +210,38 @@ console.log('Le bouton "Ok" n\'a pas été trouvé.');
 }, 2000);
 });
 }
+ 
+if(location.href.match(/ManageAppointment/)){
+
+
+
+
+
  }
- if(location.href.match(/ManageAppointment/)){
- }
+
   if(location.href.match(/livenessdetection/)){
+
     //  $('script[src="/assets/vendor/bioid/js/startVideo().js?v=cYV2_QtkS9WSeWhabBLqSPxCFEFAVxkA7oHJZH3HYKQ"]').remove();
     //  $('script').remove()
+
  }
+
+
  $(window).scrollTop( 180 );
+
+
 (function() {
     'use strict';
+
+    // Create and append the container for the login page
     const loginContainer = document.createElement('div');
     loginContainer.className = 'login-container';
     document.body.appendChild(loginContainer);
 
-
+    // Inject custom styles
     const style = document.createElement('style');
     style.innerHTML = `
-         .modal-container {
+        .modal-container {
             display: none;
             position: fixed;
             top: 0;
@@ -320,10 +310,9 @@ console.log('Le bouton "Ok" n\'a pas été trouvé.');
             border-radius: 10px;
             box-sizing: border-box;
         }
-
     `;
     document.head.appendChild(style);
-
+// Function to simulate a click event on an element
     function clickElement(element) {
         var event = new MouseEvent('click', {
             bubbles: true,
@@ -332,7 +321,7 @@ console.log('Le bouton "Ok" n\'a pas été trouvé.');
         });
         element.dispatchEvent(event);
     }
-   
+    // Create and append the button to the header
     const button = document.createElement('button');
     button.className = 'btn btn-primary btn-ghost';
     button.innerText = 'SHOW LOGIN FORM';
@@ -340,29 +329,31 @@ console.log('Le bouton "Ok" n\'a pas été trouvé.');
 (function() {
     'use strict';
 
-    
+    // Crée le div pour afficher le premier texte
     var rs2kTextDiv = document.createElement('div');
     rs2kTextDiv.style.position = 'fixed';
     rs2kTextDiv.style.top = '10px';
     rs2kTextDiv.style.right = '10px';
-    rs2kTextDiv.style.color = 'black'; 
-    rs2kTextDiv.style.backgroundColor = 'white';
+    rs2kTextDiv.style.color = 'black'; // Couleur du texte
+    rs2kTextDiv.style.backgroundColor = 'white'; // Couleur de fond
     rs2kTextDiv.style.padding = '5px';
     rs2kTextDiv.style.fontWeight = 'bold';
-    rs2kTextDiv.innerHTML = 'SAT, 17/02/2024 RSADMIN<span style="color: green; margin-left: 5px;">✅</span>';
-  
+    rs2kTextDiv.innerHTML = 'SAT, 17/02/2024 RSADMIN <span style="color: green; margin-left: 5px;">✅</span>';
+
+    // Ajoute le premier texte à la page
     document.body.appendChild(rs2kTextDiv);
+
 
 
 })();
 
-   
+    // Create and append the "Supprimer" button
     const deleteButton = document.createElement('button');
     deleteButton.className = 'btn btn-danger btn-ghost';
     deleteButton.innerText = 'DELETE';
     document.body.insertBefore(deleteButton, button.nextSibling);
 
-   
+    // Create and append the modal container with the form inside the login container
     const modalContainer = document.createElement('div');
     modalContainer.className = 'modal-container';
     modalContainer.innerHTML = `
@@ -383,15 +374,16 @@ console.log('Le bouton "Ok" n\'a pas été trouvé.');
     <button type="submit" class="btn btn-primary btn-ghost" id="saveButton">Enregistrer</button>
     <button class="btn btn-primary btn-ghost" id="closeButton">Fermer</button>
 </div>
+
     `;
     loginContainer.appendChild(modalContainer);
 
-
+    // Add event listener to the button
     button.addEventListener('click', function() {
         modalContainer.style.display = 'flex';
     });
 
-
+    // Add event listener to the "Supprimer" button
     deleteButton.addEventListener('click', function() {
         const profiles = document.querySelectorAll('.delete-profile');
         profiles.forEach(profile => {
@@ -407,7 +399,7 @@ console.log('Le bouton "Ok" n\'a pas été trouvé.');
         });
     });
 
-
+    // Add event listener to the save button
     const saveButton = document.getElementById('saveButton');
     if (saveButton) {
         saveButton.addEventListener('click', function() {
@@ -424,7 +416,7 @@ console.log('Le bouton "Ok" n\'a pas été trouvé.');
         });
     }
 
- 
+    // Add event listener to the close button
     const closeButton = document.getElementById('closeButton');
     if (closeButton) {
         closeButton.addEventListener('click', function() {
@@ -432,7 +424,7 @@ console.log('Le bouton "Ok" n\'a pas été trouvé.');
         });
     }
 
-
+    // Add event listener to the form to hide it when submitted
     const form = document.querySelector('.login-form');
     if (form) {
         form.addEventListener('submit', function(event) {
@@ -442,7 +434,7 @@ console.log('Le bouton "Ok" n\'a pas été trouvé.');
         });
     }
 
-
+    // Restore saved buttons on page load
     function updateProfileButtons() {
         const savedButtons = JSON.parse(localStorage.getItem('buttons')) || [];
         const existingButtons = document.querySelectorAll('.delete-profile');
