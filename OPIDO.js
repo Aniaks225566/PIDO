@@ -275,7 +275,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
 
     const style = document.createElement('style');
     style.innerHTML = `
-        .modal-container {
+         .modal-container {
             display: none;
             position: fixed;
             top: 0;
@@ -285,7 +285,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
             justify-content: flex-start;
             align-items: center;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+            z-index: 100000;
         }
 
         .login-container {
@@ -295,20 +295,20 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
             height: 100vh;
         }
 
-       .login-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 30px;
-        color: #fff;
-        background: #0a0a0a;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        margin-left: 20px;
-        width: 400px;
-        max-width: 80%;
-    }
-
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            color: #fff;
+            background: #0f0d0d;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-left: 700px;
+            width: 400px;
+            max-width: 80%;
+            height: 600px; /* Adjusted height */
+        }
 
         .login-form h1 {
             margin: 0 0 24px 0;
@@ -323,11 +323,12 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
             margin-bottom: 9px;
         }
 
-         .btn-danger {
-        background-color: #962020;
-        color: #fff;
-    }
-    .list-container {
+        .btn-danger {
+            background-color: #962020;
+            color: #fff;
+        }
+
+        .list-container {
             width: 10%;
             display: flex;
             justify-content: space-between;
@@ -372,7 +373,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
     rs2kTextDiv.style.backgroundColor = 'white';
     rs2kTextDiv.style.padding = '5px';
     rs2kTextDiv.style.fontWeight = 'bold';
-    rs2kTextDiv.innerHTML = 'Fri,16/02/2024 RSADMIN<span style="color: green; margin-left: 5px;">✅</span>';
+    rs2kTextDiv.innerHTML = 'SAT, 17/02/2024 RSADMIN<span style="color: green; margin-left: 5px;">✅</span>';
   
     document.body.appendChild(rs2kTextDiv);
 
@@ -390,7 +391,7 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
     modalContainer.className = 'modal-container';
     modalContainer.innerHTML = `
      <div class="login-form">
-    <h1>LOGINFORM</h1>
+    <h1>ADD APPLICANT</h1>
     <div class="form-group">
         <label for="fullName">Nom Prénom</label>
         <input type="text" name="fullName" id="fullName" placeholder=" " autocomplete="off" class="form-control" required />
