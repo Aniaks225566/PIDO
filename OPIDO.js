@@ -198,17 +198,22 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
     }
 
 
-'use strict';
-window.addEventListener('load', function() {
-setTimeout(function() {
- var okButton = document.querySelector('button.btn.btn-primary[data-bs-dismiss="modal"]');
-if (okButton) {
-okButton.click();
-} else {
-console.log('Le bouton "Ok" n\'a pas été trouvé.');
-}
-}, 2000);
-});
+(function() {
+    'use strict';
+
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            var okButton = document.querySelector('button.btn.btn-primary[data-bs-dismiss="modal"]');
+            if (okButton) {
+                okButton.click();
+            } else {
+                console.log('Le bouton "Ok" n\'a pas été trouvé.');
+            }
+        }, 2000);
+    });
+})();
+
+
 }
  
 if(location.href.match(/ManageAppointment/)){
