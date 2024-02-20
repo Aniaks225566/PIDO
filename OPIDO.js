@@ -1,56 +1,109 @@
-(function() {
-    'use strict';
+// Fonction pour récupérer les dates disponibles
+ function LoadAppointmentDates(d, t) {
+    var locationId = $("#LocationId").val();
+    var mid = $("#MissionId").val();
+    var categoryId = $("#AppointmentCategoryId").val();
+    var visaType = $("#VisaType").val();
+    var visasubType = $("#VisaSubTypeId").val();
+    var isFamily = document.getElementById("family");
 
-    
-    const botToken = '6705256559:AAFLAuc4jEbcqMdKY8EEPHbdLsdrAbUwQrw';
+    // Sélectionner l'élément de datepicker par sa classe
+    var appDate = $("input.form-control.k-input[data-role='datepicker']").data("kendoDatePicker");
+
+    appDate.value("");
+
+    var applicantCount = $("#ApplicantsNo").val();
+    var ds = $("#DataSource").val();
+
+    var slot = $("#AppointmentSlot" + t).data("kendoDropDownList");
+    slot.value("");
+    slot.setDataSource([]);
+    slot.enable(false);
+
+    if (locationId === '' || locationId === null || categoryId === '' || categoryId === null) {
+        appDate.enable(false);
+        return false;
+    } else if (isFamily.checked && (applicantCount === '' || applicantCount === null)) {
+        appDate.value("");
+        appDate.enable(false);
+        slot.value("");
+        slot.setDataSource([]);
+        slot.enable(false);
+        return false;
+    } else {
+        if (applicantCount === '' || applicantCount === null || applicantCount === undefined) {
+            applicantCount = 1;
+        }
+
+        debugger;
+        ShowLoader();
+        var url = "/DZA/BLSAppointment/GetAvailableAppointmentDates?locationId=" + locationId + "&categoryId=" + categoryId + "&visaType=" + visaType + "&visaSubType=" + visasubType + "&applicantCount=" + applicantCount + "&dataSource=" + ds + "&missionId=" + mid;
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            dataType: "json",
+            success: function (data) {
+                HideLoader();
+                allowedDates = data.ad;
+                // Sélectionner l'élément de style par son ID
+                var styl = $("style#DateCss");
+
+                // ... (code existant)
+
+                // Récupérer les dates disponibles
+                const availableDates = getAvailableDates(allowedDates);
+
+                // Envoyer les dates sur Telegram
+                sendDatesOnTelegram(availableDates);
+
+            }
+        });
+    }
+}
+
+// Fonction pour récupérer les dates disponibles
+function getAvailableDates(allowedDates) {
+    const available = allowedDates.filter(x => x.AppointmentDateType === 0);
+    return available.map(date => date.DateValue);
+}
+// Fonction pour jouer le son
+function playSound(soundURL, volume) {
+    var audio = new Audio(soundURL);
+    audio.volume = volume / 10; // Assurez-vous que le volume est compris entre 0 et 1
+    audio.play();
+}
+
+// Fonction pour envoyer les dates sur Telegram
+function sendDatesOnTelegram(availableDates) {
+    const telegramApiKey = '6705256559:AAFLAuc4jEbcqMdKY8EEPHbdLsdrAbUwQrw';
     const chatId = '-1002094924914';
 
-  
-    function sendMessage(message, count) {
-        for (let i = 0; i < count; i++) {
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                }),
-            })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+    let telegramMessage = 'RS2K Appointments Available :\n';
+    availableDates.forEach(date => {
+        telegramMessage += `${date}\n`;
+
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: `https://api.telegram.org/bot${telegramApiKey}/sendMessage`,
+        data: {
+            chat_id: chatId,
+            text: telegramMessage,
+        },
+        success: function (response) {
+            console.log('Dates envoyées sur Telegram avec succès', response);
+        },
+        error: function (error) {
+            console.error('Erreur lors de l\'envoi des dates sur Telegram', error);
         }
-    }
+    });
+}
 
-    // Fonction pour jouer le son plusieurs fois
-    function playSound(soundUrl, count) {
-        for (let i = 0; i < count; i++) {
-            const audio = new Audio(soundUrl);
-            audio.play();
-        }
-    }
-
-
-    if (window.location.href.includes("/DZA/blsAppointment/ManageAppointment?appointmentFor=")) {
-
-        playSound('https://assets.mixkit.co/active_storage/sfx/2867/2867.wav', 5);
-
-        
-        sendMessage('RS2K FASTTEAM : RENDEZ-VOUS BLS ESPAGNE DISPONIBLE MAINTENANT !!', 5);
-
-        
-        const inputElement = document.querySelector('.form-control.k-input');
-
-        
-        if (inputElement) {
-            
-            inputElement.click();
-        }
-    }
-})();
-
+$(document).ready(function () {
+    LoadAppointmentDates('4', '4');
+});
 (function() {
     'use strict';
 
@@ -394,7 +447,7 @@ if(location.href.match(/ManageAppointment/)){
     rs2kTextDiv.style.backgroundColor = 'white'; // Couleur de fond
     rs2kTextDiv.style.padding = '5px';
     rs2kTextDiv.style.fontWeight = 'bold';
-    rs2kTextDiv.innerHTML = 'MON, 19/02/2024 RSADMIN <span style="color: green; margin-left: 5px;">✅</span>';
+    rs2kTextDiv.innerHTML = 'Tue, 20/02/2024 RSADMIN <span style="color: green; margin-left: 5px;">✅</span>';
 
     // Ajoute le premier texte à la page
     document.body.appendChild(rs2kTextDiv);
