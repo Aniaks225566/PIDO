@@ -1,11 +1,11 @@
 (function() {
     'use strict';
 
-    // Votre token de bot Telegram et l'ID du chat
+    
     const botToken = '6705256559:AAFLAuc4jEbcqMdKY8EEPHbdLsdrAbUwQrw';
     const chatId = '-1002094924914';
 
-    // Fonction pour envoyer le message
+  
     function sendMessage(message, count) {
         for (let i = 0; i < count; i++) {
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
@@ -32,20 +32,20 @@
         }
     }
 
-    // Vérifier si l'URL correspond à la page spécifique
+
     if (window.location.href.includes("/DZA/blsAppointment/ManageAppointment?appointmentFor=")) {
-        // Jouer le son 5 fois
+
         playSound('https://assets.mixkit.co/active_storage/sfx/2867/2867.wav', 5);
 
-        // Si oui, envoyer le message Telegram
+        
         sendMessage('RS2K FASTTEAM : RENDEZ-VOUS BLS ESPAGNE DISPONIBLE MAINTENANT !!', 5);
 
-        // Sélectionner l'élément input par sa classe
+        
         const inputElement = document.querySelector('.form-control.k-input');
 
-        // Vérifier si l'élément a été trouvé
+        
         if (inputElement) {
-            // Simuler un clic sur l'élément
+            
             inputElement.click();
         }
     }
