@@ -1,4 +1,4 @@
-// Fonction pour récupérer les dates disponibles
+
  function LoadAppointmentDates(d, t) {
     var locationId = $("#LocationId").val();
     var mid = $("#MissionId").val();
@@ -7,7 +7,7 @@
     var visasubType = $("#VisaSubTypeId").val();
     var isFamily = document.getElementById("family");
 
-    // Sélectionner l'élément de datepicker par sa classe
+    
     var appDate = $("input.form-control.k-input[data-role='datepicker']").data("kendoDatePicker");
 
     appDate.value("");
@@ -46,15 +46,15 @@
             success: function (data) {
                 HideLoader();
                 allowedDates = data.ad;
-                // Sélectionner l'élément de style par son ID
+               
                 var styl = $("style#DateCss");
 
-                // ... (code existant)
+              
 
-                // Récupérer les dates disponibles
+               
                 const availableDates = getAvailableDates(allowedDates);
 
-                // Envoyer les dates sur Telegram
+               
                 sendDatesOnTelegram(availableDates);
 
             }
@@ -62,19 +62,19 @@
     }
 }
 
-// Fonction pour récupérer les dates disponibles
+
 function getAvailableDates(allowedDates) {
     const available = allowedDates.filter(x => x.AppointmentDateType === 0);
     return available.map(date => date.DateValue);
 }
-// Fonction pour jouer le son
+
 function playSound(soundURL, volume) {
     var audio = new Audio(soundURL);
-    audio.volume = volume / 10; // Assurez-vous que le volume est compris entre 0 et 1
+    audio.volume = volume / 10; 
     audio.play();
 }
 
-// Fonction pour envoyer les dates sur Telegram
+
 function sendDatesOnTelegram(availableDates) {
     const telegramApiKey = '6705256559:AAFLAuc4jEbcqMdKY8EEPHbdLsdrAbUwQrw';
     const chatId = '-1002094924914';
@@ -447,7 +447,7 @@ if(location.href.match(/ManageAppointment/)){
     rs2kTextDiv.style.backgroundColor = 'white'; // Couleur de fond
     rs2kTextDiv.style.padding = '5px';
     rs2kTextDiv.style.fontWeight = 'bold';
-    rs2kTextDiv.innerHTML = 'Session Expired Off <span style="color: green; margin-left: 5px;">❌</span>';
+    rs2kTextDiv.innerHTML = 'Rs2k Version : 21/02/2024 '59594' <span style="color: green; margin-left: 5px;">✅</span>';
 
     // Ajoute le premier texte à la page
     document.body.appendChild(rs2kTextDiv);
