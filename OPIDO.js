@@ -447,7 +447,7 @@ if(location.href.match(/ManageAppointment/)){
     rs2kTextDiv.style.backgroundColor = 'white'; // Couleur de fond
     rs2kTextDiv.style.padding = '5px';
     rs2kTextDiv.style.fontWeight = 'bold';
-    rs2kTextDiv.innerHTML = 'Tue, 20/02/2024 RSADMIN <span style="color: green; margin-left: 5px;">✅</span>';
+    rs2kTextDiv.innerHTML = 'Session Expired Off <span style="color: green; margin-left: 5px;">❌</span>';
 
     // Ajoute le premier texte à la page
     document.body.appendChild(rs2kTextDiv);
