@@ -285,13 +285,24 @@ if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
         }*/
  }
 
-      var variabLe_4 = $(".bg-mode form div:visible .form-label:contains('Location')").attr("id");
+    var choixUtilisateur = prompt(" SELECT : 0 // ALGER / 1 // ORAN ");
+var variabLe_4 = $(".bg-mode form div:visible .form-label:contains('Location')").attr("id");
+
+if (choixUtilisateur === "0" || choixUtilisateur === "1") {
     for (var i = 1; i < 6; i++) {
         if (variabLe_4 == "Location" + i + "_label") {
-            $("#Location" + i + "_listbox > li:eq(1)").click();
+            // Sélectionne l'élément correspondant en fonction du choix de l'utilisateur
+            var indexToClick = parseInt(choixUtilisateur);
+
+            // Clique sur l'élément de la liste déroulante correspondant au choix de l'utilisateur
+            $("#Location" + i + "_listbox > li:eq(" + indexToClick + ")").click();
+
+        
+            break;
         }
     }
-
+} else {
+}
 
 (function() {
     'use strict';
@@ -438,7 +449,7 @@ if(location.href.match(/ManageAppointment/)){
     rs2kTextDiv.style.backgroundColor = 'white'; // Couleur de fond
     rs2kTextDiv.style.padding = '5px';
     rs2kTextDiv.style.fontWeight = 'bold';
-    rs2kTextDiv.innerHTML = 'Rs2k Version : 24/02/2024 <span style="color: green; margin-left: 5px;">✅</span>';
+    rs2kTextDiv.innerHTML = 'Rs2k Version : 25/02/2024 <span style="color: green; margin-left: 5px;">✅</span>';
 
     // Ajoute le premier texte à la page
     document.body.appendChild(rs2kTextDiv);
