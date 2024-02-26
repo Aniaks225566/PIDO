@@ -315,7 +315,7 @@ if (choixUtilisateur === "0" || choixUtilisateur === "1") {
             } else {
                 console.log('Le bouton "Ok" n\'a pas été trouvé.');
             }
-        }, 2000);
+        }, 1000);
     });
 })();
 
