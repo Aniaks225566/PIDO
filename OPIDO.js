@@ -1,3 +1,23 @@
+function reloadPageIfError() {
+    const errorTitles = [
+        "504 Gateway Time-out",
+        "502 Bad Gateway",
+        "403 Forbidden",
+        "500 Internal Server Error",
+        "Application Temporarily Unavailable",
+    ];
+
+    const pageTitle = document.title;
+
+    if (errorTitles.includes(pageTitle)) {
+        setTimeout(function () {
+            window.location.reload();
+        }, 1000); // Reload after 30 seconds
+    }
+}
+
+// Call the function
+reloadPageIfError();
 function LoadAppointmentDates(d, t) {
     var locationId = $("#LocationId").val();
     var mid = $("#MissionId").val();
