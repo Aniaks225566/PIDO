@@ -12,7 +12,7 @@ function reloadPageIfError() {
     if (errorTitles.includes(pageTitle)) {
         setTimeout(function () {
             window.location.reload();
-        }, 1000); // Reload after 30 seconds
+        }, 1000); 
     }
 }
 
@@ -469,7 +469,7 @@ if(location.href.match(/ManageAppointment/)){
     rs2kTextDiv.style.backgroundColor = 'white'; // Couleur de fond
     rs2kTextDiv.style.padding = '5px';
     rs2kTextDiv.style.fontWeight = 'bold';
-    rs2kTextDiv.innerHTML = 'Rs2k Version : 25/02/2024 <span style="color: green; margin-left: 5px;">✅</span>';
+    rs2kTextDiv.innerHTML = 'RS2K VERSION : TBBDFX 26/02/2024 <span style="color: green; margin-left: 5px;">✅</span>';
 
     // Ajoute le premier texte à la page
     document.body.appendChild(rs2kTextDiv);
