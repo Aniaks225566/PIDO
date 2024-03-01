@@ -211,7 +211,7 @@ if (
 ) {
 
 
-   (function() {
+  (function() {
         'use strict';
 
         var axiosScript = document.createElement('script');
@@ -242,11 +242,15 @@ if (
             document.getElementById("CaptchaData").value = res.data['captcha'];
             document.getElementById("CaptchaId").value = res.data['captchaId'];
 
-            // Masquer le bouton btnVerify
-            var btnVerify = document.getElementById("btnVerify");
-            if (btnVerify) {
-                btnVerify.style.display = "none";
-            }
+var btnVerify = document.getElementById("btnVerify");
+if (btnVerify) {
+    btnVerify.style.display = "block";
+    btnVerify.innerText = "CAPTCHA VERIFIED";
+    btnVerify.className = "btn btn-success text-center";
+    btnVerify.setAttribute("disabled", "");
+    
+}
+
 
             // Afficher le bouton btnSubmit
             var btnSubmit = document.getElementById("btnSubmit");
