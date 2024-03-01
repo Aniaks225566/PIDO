@@ -1,4 +1,20 @@
+(function() {
+    'use strict';
 
+    // Remplacez l'URL de la nouvelle image que vous souhaitez utiliser
+    var nouvelleImageURL = 'https://i.postimg.cc/SKVb9RtL/418726005-783433476948697-3011944944215725530-n-1.png';
+
+    // Sélectionnez l'élément du logo par sa classe CSS
+    var logoElement = document.querySelector('.h-50px.mb-2');
+
+    // Vérifiez si l'élément du logo existe avant de le remplacer
+    if (logoElement) {
+        // Remplacez l'attribut src de l'élément avec la nouvelle URL de l'image
+        logoElement.src = nouvelleImageURL;
+    } else {
+        console.error('Élément du logo non trouvé');
+    }
+})();
 function reloadPageIfError() {
     const errorTitles = [
         "504 Gateway Time-out",
