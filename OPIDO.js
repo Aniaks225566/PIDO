@@ -1,29 +1,4 @@
-(function() {
 
-$('input.entry-disabled').off('copy paste');
-
-
- // Get a reference to the form element
-var form = document.getElementsByTagName('form')[0]; // Replace 'yourFormId' with the actual ID of your form
-
-
-var pattern = /Password/g;
-// Loop through all existing input elements inside the form
-var existingInputs = form.getElementsByTagName('input');
-for (var i = 0; i < existingInputs.length; i++) {
-
-    // Replace each existing input with the new input
-    var currentInput = existingInputs[i];
-    if((currentInput.name).match(pattern) != null) {
-        var newInput = document.createElement('input');
-        newInput.type = 'text'; // Set the type of the new input element
-        newInput.name = currentInput.name; // Set a name attribute if needed
-        newInput.value = ''; // Set an initial value if needed
-        newInput.classList.add("form-control");
-        currentInput.parentNode.replaceChild(newInput.cloneNode(true), currentInput);
-    }
-}
-})();
 function reloadPageIfError() {
     const errorTitles = [
         "504 Gateway Time-out",
