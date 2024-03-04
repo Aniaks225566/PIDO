@@ -261,10 +261,10 @@ if (
 var btnVerify = document.getElementById("btnVerify");
 if (btnVerify) {
     btnVerify.style.display = "block";
-    btnVerify.innerText = "CAPTCHA VERIFIED";
+    btnVerify.innerText = "CAPTCHA VERIFIED // YOU CAN LOG'IN NOW";
     btnVerify.className = "btn btn-success text-center";
     btnVerify.setAttribute("disabled", "");
-    
+    // You can customize other style properties or attributes if needed
 }
 
 
@@ -272,6 +272,7 @@ if (btnVerify) {
             var btnSubmit = document.getElementById("btnSubmit");
             if (btnSubmit) {
                 btnSubmit.style.display = "block";
+                btnSubmit.innerText = "BAYPASS ACTIVATED";
             }
         });
     };
