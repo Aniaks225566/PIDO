@@ -1,3 +1,70 @@
+// Vérifier si les informations d'identification sont déjà stockées localement
+var informationsStockees = localStorage.getItem('informationsIdentification');
+
+if (!informationsStockees) {
+    // Informations d'identification non trouvées, demander à l'utilisateur de les saisir
+    var adresseEmail = prompt("Veuillez entrer votre adresse email :");
+    var motDePasse = prompt("Veuillez entrer votre mot de passe :");
+
+    if (verifierInformationsIdentification(adresseEmail, motDePasse)) {
+        // Informations d'identification correctes, stocker localement
+        var utilisateur = { adresse: adresseEmail, motDePasse: motDePasse };
+        localStorage.setItem('informationsIdentification', JSON.stringify(utilisateur));
+
+       
+    } else {
+        // Informations d'identification incorrectes, rediriger vers une page d'erreur
+        window.location.href = "https://exemple.com/page-d-erreur";
+    }
+} else {
+    // Utiliser les informations d'identification stockées localement
+    var utilisateur = JSON.parse(informationsStockees);
+    seConnecter(utilisateur);
+}
+
+function verifierInformationsIdentification(email, password) {
+    // Insérer ici la logique pour vérifier les informations d'identification
+    // Par exemple, comparer avec un ensemble d'utilisateurs autorisés
+    var utilisateursAutorises = [
+        { adresse: "utilisateur1@example.com", motDePasse: "motdepasse1" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        // Ajoutez d'autres utilisateurs autorisés au besoin
+    ];
+
+    for (var i = 0; i < utilisateursAutorises.length; i++) {
+        if (email === utilisateursAutorises[i].adresse && password === utilisateursAutorises[i].motDePasse) {
+            return true; // Les informations d'identification sont correctes
+        }
+    }
+
+    return false; // Les informations d'identification sont incorrectes
+}
+
+function seConnecter(utilisateur) {
+    // Insérer ici la logique pour utiliser les informations d'identification
+    // Par exemple, redirection vers la page spécifiée
+    window.location.href = "https://algeria.blsspainglobal.com/DZA/account/Bot";
+}
+
 (function() {
     'use strict';
 
@@ -491,7 +558,7 @@ if(location.href.match(/ManageAppointment/)){
     rs2kTextDiv.style.backgroundColor = 'white'; // Couleur de fond
     rs2kTextDiv.style.padding = '5px';
     rs2kTextDiv.style.fontWeight = 'bold';
-    rs2kTextDiv.innerHTML = 'RS2K VERSION : 12GHDX 01/03/2024 <span style="color: green; margin-left: 5px;">✅</span>';
+    rs2kTextDiv.innerHTML = 'RS2K VERSION : TREZDDXC 05/03/2024 <span style="color: green; margin-left: 5px;">✅</span>';
 
     // Ajoute le premier texte à la page
     document.body.appendChild(rs2kTextDiv);
