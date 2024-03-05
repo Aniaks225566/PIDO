@@ -1,5 +1,5 @@
 
-(function() {
+/*(function() {
     'use strict';
 
     // Remplacez l'URL de la nouvelle image que vous souhaitez utiliser
@@ -15,7 +15,7 @@
     } else {
         console.error('Élément du logo non trouvé');
     }
-})();
+})();*/
 function reloadPageIfError() {
     const errorTitles = [
         "504 Gateway Time-out",
