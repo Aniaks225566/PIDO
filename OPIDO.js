@@ -26,7 +26,7 @@ function verifierInformationsIdentification(email, password) {
     // Par exemple, comparer avec un ensemble d'utilisateurs autorisés
     var utilisateursAutorises = [
         { adresse: "YoucefBelemou@rs2k.fr", motDePasse: "1994" },
-        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "KhalidouBoussaada@rs2k.fr", motDePasse: "2001" },
         { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
         { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
         { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
