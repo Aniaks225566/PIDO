@@ -25,7 +25,7 @@ function verifierInformationsIdentification(email, password) {
     // Insérer ici la logique pour vérifier les informations d'identification
     // Par exemple, comparer avec un ensemble d'utilisateurs autorisés
     var utilisateursAutorises = [
-        { adresse: "utilisateur1@example.com", motDePasse: "motdepasse1" },
+        { adresse: "YoucefBelemou@rs2k.fr", motDePasse: "1994" },
         { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
         { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
         { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
@@ -56,12 +56,6 @@ function verifierInformationsIdentification(email, password) {
     }
 
     return false; // Les informations d'identification sont incorrectes
-}
-
-function seConnecter(utilisateur) {
-    // Insérer ici la logique pour utiliser les informations d'identification
-    // Par exemple, redirection vers la page spécifiée
-    window.location.href = "https://algeria.blsspainglobal.com/DZA/account/Bot";
 }
 
 (function() {
