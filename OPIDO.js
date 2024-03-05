@@ -27,8 +27,8 @@ function verifierInformationsIdentification(email, password) {
     var utilisateursAutorises = [
         { adresse: "YoucefBelemou@rs2k.fr", motDePasse: "1994" },
         { adresse: "KhalidouBoussaada@rs2k.fr", motDePasse: "2001" },
-        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
-        { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
+        { adresse: "AliAli@rs2k.fr", motDePasse: "1980" },
+        { adresse: "SAHOUINab@rs2k.fr", motDePasse: "1983" },
         { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
         { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
         { adresse: "utilisateur2@example.com", motDePasse: "motdepasse2" },
