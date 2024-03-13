@@ -1,10 +1,10 @@
-/*(function() {
+(function() {
     'use strict';
 
     setInterval(function(){
         location.reload();
     }, 2000);
-})();*/
+})();
 function reloadPageIfError() {
     const errorTitles = [
         "504 Gateway Time-out",
