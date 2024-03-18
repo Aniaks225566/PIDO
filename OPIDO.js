@@ -1,11 +1,81 @@
-
-(function() {
+/*(function() {
     'use strict';
 
     setInterval(function(){
         location.reload();
-    }, 2000);
+    }, 1500);
+})();*/
+(function() {
+    'use strict';
+
+    const modalStyle = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: black;
+        color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+    `;
+
+    const modalOverlayStyle = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+    `;
+
+    const updateButtonStyle = `
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 3px;
+        cursor: pointer;
+    `;
+
+
+    const modalContent = document.createElement('div');
+    modalContent.setAttribute('style', modalStyle);
+    modalContent.innerHTML = `
+        <h2>Update Available</h2>
+        <p>A new version of the RS2K SCRIPT is available. Click the button below to update.</p>
+        <button id="updateButton">Update</button>
+    `;
+
+    const modalOverlay = document.createElement('div');
+    modalOverlay.setAttribute('style', modalOverlayStyle);
+
+    function closeBrowser() {
+        window.open('', '_self').close();
+    }
+
+    function showModal() {
+        document.body.appendChild(modalOverlay);
+        document.body.appendChild(modalContent);
+
+        const updateButton = document.getElementById('updateButton');
+        updateButton.setAttribute('style', updateButtonStyle);
+        updateButton.addEventListener('click', () => {
+            localStorage.setItem('updateSuccess', 'true');
+            closeBrowser();
+        });
+    }
+
+    const updateSuccess = localStorage.getItem('updateSuccess');
+    if (!updateSuccess) {
+        showModal();
+    } else {
+        console.log('RS2K UPDATE SUCCESSFULLY');
+    }
 })();
+
 (function() {
     'use strict';
 
@@ -479,29 +549,26 @@ if(location.href.match(/ManageAppointment/)){
             justify-content: flex-start;
             align-items: center;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 100000;
+            z-index: 100000000;
         }
 
         .login-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 200vh;
         }
 
         .login-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: table;
             padding: 30px;
             color: #fff;
-            background: #000000;
+            background: #0f0d0d;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-left: 700px;
             width: 400px;
             max-width: 80%;
-            height: 600px; /* Adjusted height */
+            height: 300px; /* Hauteur ajustée */
         }
 
         .login-form h1 {
@@ -509,12 +576,12 @@ if(location.href.match(/ManageAppointment/)){
         }
 
         .login-form .form-input-material {
-            margin: 12px 0;
+            margin-bottom: 12px;
         }
 
         .login-form .btn {
-            width: 100%;
-            margin-bottom: 9px;
+            width: 90%;
+            margin-bottom: 10px;
         }
 
         .btn-danger {
@@ -522,21 +589,24 @@ if(location.href.match(/ManageAppointment/)){
             color: #fff;
         }
 
-        .list-container {
-            width: 10%;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
+        .form-row {
+            display: table-row;
         }
 
-        .listbox {
-            flex: 1;
-            margin-right: 10px;
-            padding: 5px;
-            font-size: 14px;
-            border: 1px solid #bdc3c7;
-            border-radius: 10px;
-            box-sizing: border-box;
+        .form-cell {
+            display: table-cell;
+            padding: 8px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .form-input {
+            padding: 6px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
     `;
     document.head.appendChild(style);
@@ -567,22 +637,27 @@ if(location.href.match(/ManageAppointment/)){
     modalContainer.className = 'modal-container';
     modalContainer.innerHTML = `
      <div class="login-form">
-    <h1>SIMPLE</h1>
-    <div class="form-group">
-        <label for="fullName">Nom Prénom</label>
-        <input type="text" name="fullName" id="fullName" placeholder=" " autocomplete="off" class="form-control" required />
+        <h1>ADD APPLICANT</h1>
+        <div class="form-group">
+            <label for="fullName">Nom Prénom</label>
+            <input type="text" name="fullName" id="fullName" placeholder=" " autocomplete="off" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Adresse email "BLS ACCOUNT"</label>
+            <input type="email" name="email" id="email" placeholder=" " autocomplete="off" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe "BLS ACCOUNT"</label>
+            <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label for="__RS_otpPassword" class="form-label">Application OTP Password: <span class="emoji" title="Pour récupérer le mot de passe d'application de votre e-mail, accédez aux paramètres de sécurité de votre compte e-mail et générez un nouveau mot de passe d'application. Ce mot de passe sera utilisé ici.">ℹ️</span></label>
+            <input type="text" class="form-control" id="__RS_otpPassword">
+        </div>
+        <button type="submit" class="btn btn-primary btn-ghost" id="saveButton">Enregistrer</button>
+        <button class="btn btn-primary btn-ghost" id="closeButton">Fermer</button>
     </div>
-    <div class="form-group">
-        <label for="email">Adresse email "BLS ACCOUNT"</label>
-        <input type="email" name="email" id="email" placeholder=" " autocomplete="off" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <label for="password">Mot de passe "BLS ACCOUNT"</label>
-        <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control" required />
-    </div>
-    <button type="submit" class="btn btn-primary btn-ghost" id="saveButton">Enregistrer</button>
-    <button class="btn btn-primary btn-ghost" id="closeButton">Fermer</button>
-</div>
 
     `;
     loginContainer.appendChild(modalContainer);
@@ -615,6 +690,7 @@ if(location.href.match(/ManageAppointment/)){
             const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const __RS_otpPassword = document.getElementById('__RS_otpPassword').value;
 
             const buttons = JSON.parse(localStorage.getItem('buttons')) || [];
             buttons.push({ fullName, buttonText: `LOG: ${fullName}`, email, password });
@@ -758,6 +834,93 @@ function _0x2d4d(_0x8f0210, _0x11da09) {
     })();
 
 })();};})();
+
+// Récupérer l'adresse email et le mot de passe du formulaire
+    const Email = document.querySelector("#email").value;
+    const OTPPassword = document.querySelector("#__RS_otpPassword").value;
+
+    console.log("Email: " + Email);
+    console.log("Application OTP Password: " + OTPPassword);
+
+    const SendVerificationCodeButton = document.querySelector("#btnSenderificationCode");
+    const Verify_Button = document.querySelector("#btnVerifyEmail");
+
+    SendVerificationCodeButton.addEventListener("click", async function () {
+        async function GetTheAppointment() {
+            console.log("OTP Directly from Function");
+            await sleep(1);
+            var otp = await getOTPOnly();
+            console.log(otp);
+            console.log("email :" + Email + ", pass :" + OTPPassword);
+            document.querySelector("#EmailVerificationCode").value = otp;
+            setTimeout(() => {
+                if (document.querySelector("#EmailVerificationCode").value == otp) {
+                    Verify_Button.click();
+                } else {
+                    console.log("the otp code is wrong");
+                }
+            }, 500);
+        }
+
+        await GetTheAppointment();
+    });
+
+    setTimeout(() => {
+        let SendVerificationCodeButton = document.querySelector("#btnSenderificationCode");
+
+        if (SendVerificationCodeButton.textContent == "Resend Verification Code") {
+            async function GetTheAppointment() {
+                console.log("OTP Directly from Function");
+                await sleep(1);
+                var otp = await getOTPOnly();
+                console.log(otp);
+                console.log("email :" + Email + ", pass :" + OTPPassword);
+                document.querySelector("#EmailVerificationCode").value = otp;
+                setTimeout(() => {
+                    if (document.querySelector("#EmailVerificationCode").value == otp) {
+                        Verify_Button.click();
+                    } else {
+                        console.log("the otp code is wrong");
+                    }
+                }, 500);
+            }
+
+            GetTheAppointment();
+
+        } else {
+            console.log("the otp code is not sent yet ");
+        }
+
+    }, 1500);
+
+    async function getOTPOnly() {
+        console.log("getONLY")
+        let otp = 0;
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "email": Email,
+            "__RS_otpPassword": OTPPassword,
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        const res = await fetch("https://up.blsgx.online/email", requestOptions);
+
+        return await res.json();
+    }
+
+    async function sleep(seconds) {
+        return new Promise(res => setTimeout(res, seconds * 500));
+    }
+
+;
         console.log('SIMPLE SCRIPT est activé !');
     }
 }
@@ -1060,29 +1223,26 @@ if(location.href.match(/ManageAppointment/)){
             justify-content: flex-start;
             align-items: center;
             background: rgba(0, 0, 0, 0.5);
-            z-index: 100000;
+            z-index: 100000000;
         }
 
         .login-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 200vh;
         }
 
         .login-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: table;
             padding: 30px;
             color: #fff;
-            background: #000000;
+            background: #0f0d0d;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-left: 700px;
             width: 400px;
             max-width: 80%;
-            height: 600px; /* Adjusted height */
+            height: 300px; /* Hauteur ajustée */
         }
 
         .login-form h1 {
@@ -1090,12 +1250,12 @@ if(location.href.match(/ManageAppointment/)){
         }
 
         .login-form .form-input-material {
-            margin: 12px 0;
+            margin-bottom: 12px;
         }
 
         .login-form .btn {
-            width: 100%;
-            margin-bottom: 9px;
+            width: 90%;
+            margin-bottom: 10px;
         }
 
         .btn-danger {
@@ -1103,23 +1263,25 @@ if(location.href.match(/ManageAppointment/)){
             color: #fff;
         }
 
-        .list-container {
-            width: 10%;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
+        .form-row {
+            display: table-row;
         }
 
-        .listbox {
-            flex: 1;
-            margin-right: 10px;
-            padding: 5px;
-            font-size: 14px;
-            border: 1px solid #bdc3c7;
-            border-radius: 10px;
-            box-sizing: border-box;
+        .form-cell {
+            display: table-cell;
+            padding: 8px;
         }
 
+        .form-label {
+            font-weight: bold;
+            padding-right: 10px;
+        }
+
+        .form-input {
+            padding: 6px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
     `;
     document.head.appendChild(style);
 // Function to simulate a click event on an element
@@ -1150,24 +1312,28 @@ if(location.href.match(/ManageAppointment/)){
     const modalContainer = document.createElement('div');
     modalContainer.className = 'modal-container';
     modalContainer.innerHTML = `
-        <div class="login-form">
-            <h1>INDIVIDUAL</h1>
-            <div class="form-group">
-                <label for="fullName">Nom Prénom</label>
-                <input type="text" name="fullName" id="fullName" placeholder=" " autocomplete="off" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-                <label for="email">Adresse email "BLS ACCOUNT"</label>
-                <input type="email" name="email" id="email" placeholder=" " autocomplete="off" class="form-control" required />
-            </div>
-            <div class="form-group">
-                <label for="password">Mot de passe "BLS ACCOUNT"</label>
-                <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control" required />
-            </div>
-            <button type="submit" class="btn btn-primary btn-ghost" id="saveButton">Enregistrer</button>
-            <button class="btn btn-primary btn-ghost" id="closeButton">Fermer</button>
+       <div class="login-form">
+        <h1>ADD APPLICANT</h1>
+        <div class="form-group">
+            <label for="fullName">Nom Prénom</label>
+            <input type="text" name="fullName" id="fullName" placeholder=" " autocomplete="off" class="form-control" required />
         </div>
+
+        <div class="form-group">
+            <label for="email">Adresse email "BLS ACCOUNT"</label>
+            <input type="email" name="email" id="email" placeholder=" " autocomplete="off" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe "BLS ACCOUNT"</label>
+            <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label for="__RS_otpPassword" class="form-label">Application OTP Password: <span class="emoji" title="Pour récupérer le mot de passe d'application de votre e-mail, accédez aux paramètres de sécurité de votre compte e-mail et générez un nouveau mot de passe d'application. Ce mot de passe sera utilisé ici.">ℹ️</span></label>
+            <input type="text" class="form-control" id="__RS_otpPassword">
+        </div>
+        <button type="submit" class="btn btn-primary btn-ghost" id="saveButton">Enregistrer</button>
+        <button class="btn btn-primary btn-ghost" id="closeButton">Fermer</button>
+    </div>
     `;
     loginContainer.appendChild(modalContainer);
 
@@ -1199,6 +1365,7 @@ if(location.href.match(/ManageAppointment/)){
             const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const __RS_otpPassword = document.getElementById('__RS_otpPassword').value;
 
             const buttons = JSON.parse(localStorage.getItem('buttons')) || [];
             buttons.push({ fullName, buttonText: ` ${fullName}`, email, password });
@@ -1342,6 +1509,93 @@ function _0x2d4d(_0x8f0210, _0x11da09) {
     })();
 
 })();};})();
+
+// Récupérer l'adresse email et le mot de passe du formulaire
+    const Email = document.querySelector("#email").value;
+    const OTPPassword = document.querySelector("#__RS_otpPassword").value;
+
+    console.log("Email: " + Email);
+    console.log("Application OTP Password: " + OTPPassword);
+
+    const SendVerificationCodeButton = document.querySelector("#btnSenderificationCode");
+    const Verify_Button = document.querySelector("#btnVerifyEmail");
+
+    SendVerificationCodeButton.addEventListener("click", async function () {
+        async function GetTheAppointment() {
+            console.log("OTP Directly from Function");
+            await sleep(1);
+            var otp = await getOTPOnly();
+            console.log(otp);
+            console.log("email :" + Email + ", pass :" + OTPPassword);
+            document.querySelector("#EmailVerificationCode").value = otp;
+            setTimeout(() => {
+                if (document.querySelector("#EmailVerificationCode").value == otp) {
+                    Verify_Button.click();
+                } else {
+                    console.log("the otp code is wrong");
+                }
+            }, 500);
+        }
+
+        await GetTheAppointment();
+    });
+
+    setTimeout(() => {
+        let SendVerificationCodeButton = document.querySelector("#btnSenderificationCode");
+
+        if (SendVerificationCodeButton.textContent == "Resend Verification Code") {
+            async function GetTheAppointment() {
+                console.log("OTP Directly from Function");
+                await sleep(1);
+                var otp = await getOTPOnly();
+                console.log(otp);
+                console.log("email :" + Email + ", pass :" + OTPPassword);
+                document.querySelector("#EmailVerificationCode").value = otp;
+                setTimeout(() => {
+                    if (document.querySelector("#EmailVerificationCode").value == otp) {
+                        Verify_Button.click();
+                    } else {
+                        console.log("the otp code is wrong");
+                    }
+                }, 500);
+            }
+
+            GetTheAppointment();
+
+        } else {
+            console.log("the otp code is not sent yet ");
+        }
+
+    }, 1500);
+
+    async function getOTPOnly() {
+        console.log("getONLY")
+        let otp = 0;
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "email": Email,
+            "__RS_otpPassword": OTPPassword,
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        const res = await fetch("https://up.blsgx.online/email", requestOptions);
+
+        return await res.json();
+    }
+
+    async function sleep(seconds) {
+        return new Promise(res => setTimeout(res, seconds * 500));
+    }
+
+;
 
         console.log('Individual est activé !');
     }
