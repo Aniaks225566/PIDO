@@ -83,7 +83,7 @@
 
     setInterval(() => {
         if (errorsToCheck.some(error => document.body.innerText.includes(error))) {
-            document.body.innerText = "RS2K __Reload in 1sec";
+            document.body.innerText = "(Reloading in 1s [__RS2K script])";
             setTimeout(() => {
                 location.reload();
             }, 1000);
