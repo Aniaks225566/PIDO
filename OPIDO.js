@@ -5,76 +5,7 @@
         location.reload();
     }, 1500);
 })();
-(function() {
-    'use strict';
 
-    const modalStyle = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: black;
-        color: white;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 9999;
-    `;
-
-    const modalOverlayStyle = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 9998;
-    `;
-
-    const updateButtonStyle = `
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 3px;
-        cursor: pointer;
-    `;
-
-
-    const modalContent = document.createElement('div');
-    modalContent.setAttribute('style', modalStyle);
-    modalContent.innerHTML = `
-        <h2>Update Available</h2>
-        <p>A new version of the RS2K SCRIPT is available. Click the button below to update.</p>
-        <button id="updateButton">Update</button>
-    `;
-
-    const modalOverlay = document.createElement('div');
-    modalOverlay.setAttribute('style', modalOverlayStyle);
-
-    function closeBrowser() {
-        window.open('', '_self').close();
-    }
-
-    function showModal() {
-        document.body.appendChild(modalOverlay);
-        document.body.appendChild(modalContent);
-
-        const updateButton = document.getElementById('updateButton');
-        updateButton.setAttribute('style', updateButtonStyle);
-        updateButton.addEventListener('click', () => {
-            localStorage.setItem('updateSuccess', 'true');
-            closeBrowser();
-        });
-    }
-
-    const updateSuccess = localStorage.getItem('updateSuccess');
-    if (!updateSuccess) {
-        showModal();
-    } else {
-        console.log('RS2K UPDATE SUCCESSFULLY');
-    }
-})();
 
 (function() {
     'use strict';
