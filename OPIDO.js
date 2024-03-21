@@ -83,13 +83,21 @@
 
     setInterval(() => {
         if (errorsToCheck.some(error => document.body.innerText.includes(error))) {
-            document.body.innerText = "(Reloading in 1s [__RS2K script])";
-            setTimeout(() => {
-                location.reload();
-            }, 1000);
+            if (document.body.innerText.includes("403 Forbidden")) {
+                document.body.innerHTML = "<div style='font-size: 30px;'>RS2K __Access Impossible Veuillez redemarrer votre modem ou d'utlisé un proxy pour changer votre IP</div>";
+                setTimeout(() => {
+                    location.reload();
+                }, 5000); // Actualisation toutes les 5 secondes
+            } else {
+                document.body.innerText = "RS2K __Reload in 1sec";
+                setTimeout(() => {
+                    location.reload();
+                }, 1000); // Actualisation toutes les 1 seconde pour les autres erreurs
+            }
         }
-    }, 1000);
+    }, 1000); // Vérification toutes les 1 seconde
 })();
+
 (function() {
     'use strict';
 
