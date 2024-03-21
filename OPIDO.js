@@ -84,7 +84,7 @@
     setInterval(() => {
         if (errorsToCheck.some(error => document.body.innerText.includes(error))) {
             if (document.body.innerText.includes("403 Forbidden")) {
-                document.body.innerHTML = "<div style='font-size: 30px;'>RS2K __Access Impossible Veuillez redemarrer votre modem ou d'utlisé un proxy pour changer votre IP</div>";
+                document.body.innerHTML = "<div style='font-size: 30px;'>RS2K__ Accès Interdit ! Impossible de se connecter. Redémarrez votre modem ou utilisez un proxy pour changer votre IP et ouvrir la voie à de nouvelles possibilités.</div>";
                 setTimeout(() => {
                     location.reload();
                 }, 5000); // Actualisation toutes les 5 secondes
