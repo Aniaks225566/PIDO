@@ -341,20 +341,20 @@ if (btnVerify) {
         }
     }
 if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
-        window.location.replace('https://algeria.blsspainglobal.com/DZA/bls/vtv');
+        window.location.replace('https://algeria.blsspainglobal.com/DZA/bls/vtv0050');
     }
 
     if(window.location.href == ("https://algeria.blsspainglobal.com/DZA/blsappointment/manageapplicant?alert=true")){
       // window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/visatypeverification");
     }
-   if (window.location.href.includes("https://algeria.blsspainglobal.com/DZA/bls/vtv")) {
+   if (window.location.href.includes("https://algeria.blsspainglobal.com/DZA/bls/vtv0050")) {
     $("button[id=btnVerify]").click();
     setInterval(function() { tramelle(); }, 1000);
 }
 
        if(location.href.match(/Home|home|HOME/)){
           if ($(".avatar-img").length){
-                window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv");
+                window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv0050");
           }else{
                 window.location.replace("https://algeria.blsspainglobal.com/DZA/account/login");
           }
@@ -974,20 +974,20 @@ if (btnVerify) {
         }
     }
 if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
-        window.location.replace('https://algeria.blsspainglobal.com/DZA/bls/vtv');
+        window.location.replace('https://algeria.blsspainglobal.com/DZA/bls/vtv0050');
     }
 
     if(window.location.href == ("https://algeria.blsspainglobal.com/DZA/blsappointment/manageapplicant?alert=true")){
-       window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv");
+       window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv0050");
     }
-   if (window.location.href.includes("https://algeria.blsspainglobal.com/DZA/bls/vtv")) {
+   if (window.location.href.includes("https://algeria.blsspainglobal.com/DZA/bls/vtv0050")) {
     $("button[id=btnVerify]").click();
     setInterval(function() { tramelle(); }, 1000);
 }
 
        if(location.href.match(/Home|home|HOME/)){
           if ($(".avatar-img").length){
-                window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv");
+                window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv0050");
           }else{
                 window.location.replace("https://algeria.blsspainglobal.com/DZA/account/login");
           }
@@ -1558,4 +1558,3 @@ function createToggleSwitches() {
 
 // Appeler la fonction pour créer les toggle switches
 createToggleSwitches();
-
