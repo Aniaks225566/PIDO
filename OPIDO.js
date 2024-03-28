@@ -1,11 +1,11 @@
 
-/*(function() {
+(function() {
     'use strict';
 
     setInterval(function(){
         location.reload();
     }, 1500);
-})();*/
+})();
 
 
 (function() {
