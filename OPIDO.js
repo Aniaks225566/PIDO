@@ -22,7 +22,7 @@
                 document.body.innerText = "RS2K __Reload in 1sec";
                 setTimeout(() => {
                     location.reload();
-                }, 1000); // Actualisation toutes les 1 seconde pour les autres erreurs
+                }, 500); // Actualisation toutes les 1 seconde pour les autres erreurs
             }
         }
     }, 1000); // Vérification toutes les 1 seconde
