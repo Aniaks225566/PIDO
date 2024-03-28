@@ -1,3 +1,4 @@
+
 /*(function() {
     'use strict';
 
@@ -5,6 +6,7 @@
         location.reload();
     }, 1500);
 })();*/
+
 
 (function() {
     'use strict';
@@ -22,40 +24,12 @@
                 document.body.innerText = "RS2K __Reload in 1sec";
                 setTimeout(() => {
                     location.reload();
-                }, 500); // Actualisation toutes les 1 seconde pour les autres erreurs
+                }, 400); // Actualisation toutes les 1 seconde pour les autres erreurs
             }
         }
     }, 1000); // Vérification toutes les 1 seconde
 })();
-(function() {
-    'use strict';
 
-    // Créer le bouton
-    var visitButton = document.createElement('button');
-    visitButton.textContent = 'Visite Rs2k Site';
-    visitButton.style.background = 'none';
-    visitButton.style.border = 'none';
-    visitButton.style.textDecoration = 'underline';
-    visitButton.style.color = 'White';  // Couleur grise
-    visitButton.style.cursor = 'pointer';
-    visitButton.style.marginLeft = '-5px'; // Ajustez cette valeur selon votre besoin
-
-
-    // Trouver l'élément parent du logo
-    var logoParent = document.querySelector('.col-lg-3');
-    if (logoParent) {
-        // Insérer le bouton après le logo
-        logoParent.appendChild(visitButton);
-    } else {
-        console.error('Impossible de trouver l\'élément parent du logo.');
-    }
-
-    // Ajouter un écouteur d'événement pour le clic sur le bouton
-    visitButton.addEventListener('click', function() {
-        // Rediriger vers le site Rs2k
-        window.open('https://rs2kfastteam.xyz/rs2k.html', '_blank');
-    });
-})();
 
 // Fonction pour enregistrer l'état des toggle switches dans le stockage local
 function saveToggleSwitchState() {
@@ -73,23 +47,6 @@ let individualEnabled = localStorage.getItem('individualEnabled') === 'true';
 function executeSimpleScript() {
     if (simpleScriptEnabled) {
 
-function reloadPageIfError() {
-    const errorTitles = [
-        "504 Gateway Time-out",
-        "502 Bad Gateway",
-        "403 Forbidden",
-        "500 Internal Server Error",
-        "Application Temporarily Unavailable",
-    ];
-
-    const pageTitle = document.title;
-
-    if (errorTitles.includes(pageTitle)) {
-        setTimeout(function () {
-            window.location.reload();
-        }, 1000);
-    }
-}
 
 
 
@@ -203,7 +160,7 @@ if (
 var btnVerify = document.getElementById("btnVerify");
 if (btnVerify) {
     btnVerify.style.display = "block";
-    btnVerify.innerText = "CAPTCHA VERIFIED // YOU CAN LOG'IN NOW";
+    btnVerify.innerText = "CAPTCHA VERIFIED ";
     btnVerify.className = "btn btn-success text-center";
     btnVerify.setAttribute("disabled", "");
     // You can customize other style properties or attributes if needed
@@ -227,20 +184,20 @@ if (btnVerify) {
         }
     }
 if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
-        window.location.replace('https://algeria.blsspainglobal.com/DZA/bls/vtv0050');
+        window.location.replace('https://algeria.blsspainglobal.com/DZA/bls/vtv9850');
     }
 
     if(window.location.href == ("https://algeria.blsspainglobal.com/DZA/blsappointment/manageapplicant?alert=true")){
       // window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/visatypeverification");
     }
-   if (window.location.href.includes("https://algeria.blsspainglobal.com/DZA/bls/vtv0050")) {
+   if (window.location.href.includes("https://algeria.blsspainglobal.com/DZA/bls/vtv9850")) {
     $("button[id=btnVerify]").click();
     setInterval(function() { tramelle(); }, 1000);
 }
 
        if(location.href.match(/Home|home|HOME/)){
           if ($(".avatar-img").length){
-                window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv0050");
+                window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv9850");
           }else{
                 window.location.replace("https://algeria.blsspainglobal.com/DZA/account/login");
           }
@@ -447,10 +404,7 @@ if(location.href.match(/ManageAppointment/)){
         <div class="form-group">
             <label for="password">Mot de passe "BLS ACCOUNT"</label>
             <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control" required />
-        </div>
-        <div class="form-group">
-          <label for="__RS_otpPassword" class="form-label">Application OTP Password: <span class="emoji" title="Pour récupérer le mot de passe d'application de votre e-mail, accédez aux paramètres de sécurité de votre compte e-mail et générez un nouveau mot de passe d'application. Ce mot de passe sera utilisé ici.">ℹ️</span></label>
-            <input type="text" class="form-control" id="__RS_otpPassword">
+         
         </div>
         <button type="submit" class="btn btn-primary btn-ghost" id="saveButton">Enregistrer</button>
         <button class="btn btn-primary btn-ghost" id="closeButton">Fermer</button>
@@ -487,7 +441,6 @@ if(location.href.match(/ManageAppointment/)){
             const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const __RS_otpPassword = document.getElementById('__RS_otpPassword').value;
 
             const buttons = JSON.parse(localStorage.getItem('buttons')) || [];
             buttons.push({ fullName, buttonText: `LOG: ${fullName}`, email, password });
@@ -632,90 +585,7 @@ function _0x2d4d(_0x8f0210, _0x11da09) {
 
 })();};})();
 
-// Récupérer l'adresse email et le mot de passe du formulaire
-    const Email = document.querySelector("#email").value;
-    const OTPPassword = document.querySelector("#__RS_otpPassword").value;
 
-    console.log("Email: " + Email);
-    console.log("Application OTP Password: " + OTPPassword);
-
-    const SendVerificationCodeButton = document.querySelector("#btnSenderificationCode");
-    const Verify_Button = document.querySelector("#btnVerifyEmail");
-
-    SendVerificationCodeButton.addEventListener("click", async function () {
-        async function GetTheAppointment() {
-            console.log("OTP Directly from Function");
-            await sleep(1);
-            var otp = await getOTPOnly();
-            console.log(otp);
-            console.log("email :" + Email + ", pass :" + OTPPassword);
-            document.querySelector("#EmailVerificationCode").value = otp;
-            setTimeout(() => {
-                if (document.querySelector("#EmailVerificationCode").value == otp) {
-                    Verify_Button.click();
-                } else {
-                    console.log("the otp code is wrong");
-                }
-            }, 500);
-        }
-
-        await GetTheAppointment();
-    });
-
-    setTimeout(() => {
-        let SendVerificationCodeButton = document.querySelector("#btnSenderificationCode");
-
-        if (SendVerificationCodeButton.textContent == "Resend Verification Code") {
-            async function GetTheAppointment() {
-                console.log("OTP Directly from Function");
-                await sleep(1);
-                var otp = await getOTPOnly();
-                console.log(otp);
-                console.log("email :" + Email + ", pass :" + OTPPassword);
-                document.querySelector("#EmailVerificationCode").value = otp;
-                setTimeout(() => {
-                    if (document.querySelector("#EmailVerificationCode").value == otp) {
-                        Verify_Button.click();
-                    } else {
-                        console.log("the otp code is wrong");
-                    }
-                }, 500);
-            }
-
-            GetTheAppointment();
-
-        } else {
-            console.log("the otp code is not sent yet ");
-        }
-
-    }, 1500);
-
-    async function getOTPOnly() {
-        console.log("getONLY")
-        let otp = 0;
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
-            "email": Email,
-            "__RS_otpPassword": OTPPassword,
-        });
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-        const res = await fetch("https://up.blsgx.online/email", requestOptions);
-
-        return await res.json();
-    }
-
-    async function sleep(seconds) {
-        return new Promise(res => setTimeout(res, seconds * 500));
-    }
 
 ;
         console.log('SIMPLE SCRIPT est activé !');
@@ -860,20 +730,20 @@ if (btnVerify) {
         }
     }
 if (location.href.match(/ChangePassword|changepassword|CHANGEPASSWORD/)) {
-        window.location.replace('https://algeria.blsspainglobal.com/DZA/bls/vtv0050');
+        window.location.replace('https://algeria.blsspainglobal.com/DZA/bls/vtv9850');
     }
 
     if(window.location.href == ("https://algeria.blsspainglobal.com/DZA/blsappointment/manageapplicant?alert=true")){
-       window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv0050");
+       window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv9850");
     }
-   if (window.location.href.includes("https://algeria.blsspainglobal.com/DZA/bls/vtv0050")) {
+   if (window.location.href.includes("https://algeria.blsspainglobal.com/DZA/bls/vtv9850")) {
     $("button[id=btnVerify]").click();
     setInterval(function() { tramelle(); }, 1000);
 }
 
        if(location.href.match(/Home|home|HOME/)){
           if ($(".avatar-img").length){
-                window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv0050");
+                window.location.replace("https://algeria.blsspainglobal.com/DZA/bls/vtv9850");
           }else{
                 window.location.replace("https://algeria.blsspainglobal.com/DZA/account/login");
           }
@@ -1124,10 +994,6 @@ if(location.href.match(/ManageAppointment/)){
             <label for="password">Mot de passe "BLS ACCOUNT"</label>
             <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control" required />
         </div>
-        <div class="form-group">
-          <label for="__RS_otpPassword" class="form-label">Application OTP Password: <span class="emoji" title="Pour récupérer le mot de passe d'application de votre e-mail, accédez aux paramètres de sécurité de votre compte e-mail et générez un nouveau mot de passe d'application. Ce mot de passe sera utilisé ici.">ℹ️</span></label>
-            <input type="text" class="form-control" id="__RS_otpPassword">
-        </div>
         <button type="submit" class="btn btn-primary btn-ghost" id="saveButton">Enregistrer</button>
         <button class="btn btn-primary btn-ghost" id="closeButton">Fermer</button>
     </div>
@@ -1162,7 +1028,6 @@ if(location.href.match(/ManageAppointment/)){
             const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const __RS_otpPassword = document.getElementById('__RS_otpPassword').value;
 
             const buttons = JSON.parse(localStorage.getItem('buttons')) || [];
             buttons.push({ fullName, buttonText: ` ${fullName}`, email, password });
@@ -1307,90 +1172,7 @@ function _0x2d4d(_0x8f0210, _0x11da09) {
 
 })();};})();
 
-// Récupérer l'adresse email et le mot de passe du formulaire
-    const Email = document.querySelector("#email").value;
-    const OTPPassword = document.querySelector("#__RS_otpPassword").value;
 
-    console.log("Email: " + Email);
-    console.log("Application OTP Password: " + OTPPassword);
-
-    const SendVerificationCodeButton = document.querySelector("#btnSenderificationCode");
-    const Verify_Button = document.querySelector("#btnVerifyEmail");
-
-    SendVerificationCodeButton.addEventListener("click", async function () {
-        async function GetTheAppointment() {
-            console.log("OTP Directly from Function");
-            await sleep(1);
-            var otp = await getOTPOnly();
-            console.log(otp);
-            console.log("email :" + Email + ", pass :" + OTPPassword);
-            document.querySelector("#EmailVerificationCode").value = otp;
-            setTimeout(() => {
-                if (document.querySelector("#EmailVerificationCode").value == otp) {
-                    Verify_Button.click();
-                } else {
-                    console.log("the otp code is wrong");
-                }
-            }, 500);
-        }
-
-        await GetTheAppointment();
-    });
-
-    setTimeout(() => {
-        let SendVerificationCodeButton = document.querySelector("#btnSenderificationCode");
-
-        if (SendVerificationCodeButton.textContent == "Resend Verification Code") {
-            async function GetTheAppointment() {
-                console.log("OTP Directly from Function");
-                await sleep(1);
-                var otp = await getOTPOnly();
-                console.log(otp);
-                console.log("email :" + Email + ", pass :" + OTPPassword);
-                document.querySelector("#EmailVerificationCode").value = otp;
-                setTimeout(() => {
-                    if (document.querySelector("#EmailVerificationCode").value == otp) {
-                        Verify_Button.click();
-                    } else {
-                        console.log("the otp code is wrong");
-                    }
-                }, 500);
-            }
-
-            GetTheAppointment();
-
-        } else {
-            console.log("the otp code is not sent yet ");
-        }
-
-    }, 1500);
-
-    async function getOTPOnly() {
-        console.log("getONLY")
-        let otp = 0;
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
-            "email": Email,
-            "__RS_otpPassword": OTPPassword,
-        });
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-        const res = await fetch("https://up.blsgx.online/email", requestOptions);
-
-        return await res.json();
-    }
-
-    async function sleep(seconds) {
-        return new Promise(res => setTimeout(res, seconds * 500));
-    }
 
 ;
 
@@ -1421,11 +1203,11 @@ function createToggleSwitches() {
     });
 
     const simpleScriptLabel = document.createElement('label');
-    simpleScriptLabel.textContent = 'SIMPLE SCRIPT';
+    simpleScriptLabel.textContent = 'Normal Script';
     simpleScriptLabel.appendChild(simpleScriptToggle);
 
     const individualLabel = document.createElement('label');
-    individualLabel.textContent = 'INDIVIDUAL';
+    individualLabel.textContent = 'Solo Script';
     individualLabel.appendChild(individualToggle);
 
     const container = document.createElement('div');
