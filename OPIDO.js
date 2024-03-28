@@ -406,8 +406,8 @@ if(location.href.match(/ManageAppointment/)){
             <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control" required />
          
         </div>
-        <button type="submit" class="btn btn-primary btn-ghost" id="saveButton">Enregistrer</button>
-        <button class="btn btn-primary btn-ghost" id="closeButton">Fermer</button>
+        <button type="submit" class="btn btn-info btn-ghost" id="saveButton">Enregistrer</button>
+        <button class="btn btn-danger btn-ghost" id="closeButton">Fermer</button>
     </div>
 
     `;
@@ -994,8 +994,8 @@ if(location.href.match(/ManageAppointment/)){
             <label for="password">Mot de passe "BLS ACCOUNT"</label>
             <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control" required />
         </div>
-        <button type="submit" class="btn btn-primary btn-ghost" id="saveButton">Enregistrer</button>
-        <button class="btn btn-primary btn-ghost" id="closeButton">Fermer</button>
+        <button type="submit" class="btn btn-info btn-ghost" id="saveButton">Enregistrer</button>
+        <button class="btn btn-danger btn-ghost" id="closeButton">Fermer</button>
     </div>
     `;
     loginContainer.appendChild(modalContainer);
