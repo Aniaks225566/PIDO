@@ -9,7 +9,7 @@
 (function() {
     'use strict';
 
-    const errorsToCheck = ["504 Gateway Time-out", "502 Bad Gateway", "403 Forbidden", "500 Internal Server Error", "Application Temporarily Unavailable"];
+    const errorsToCheck = ["504 Gateway Time-out", "502 Bad Gateway", "403 Forbidden", "500 Internal Server Error", "Application Temporarily Unavailable", "Too Many Requests"];
 
     setInterval(() => {
         if (errorsToCheck.some(error => document.body.innerText.includes(error))) {
@@ -27,7 +27,6 @@
         }
     }, 1000); // Vérification toutes les 1 seconde
 })();
-
 (function() {
     'use strict';
 
@@ -57,50 +56,7 @@
         window.open('https://rs2kfastteam.xyz/rs2k.html', '_blank');
     });
 })();
-(function() {
-  'use strict';
 
-  function updateText() {
-    var currentDate = new Date().toLocaleDateString('fr-FR'); // Format de date français
-    var code = generateCode(); // Générer le code automatiquement
-    var rs2kTextDiv = document.createElement('div');
-    rs2kTextDiv.style.position = 'fixed';
-    rs2kTextDiv.style.top = '10px';
-    rs2kTextDiv.style.right = '10px';
-    rs2kTextDiv.style.color = 'black';
-    rs2kTextDiv.style.backgroundColor = 'white';
-    rs2kTextDiv.style.padding = '5px';
-    rs2kTextDiv.style.fontWeight = 'bold';
-    rs2kTextDiv.innerHTML = 'RS2K Version : ' + currentDate + ' / ' + code + ' <span style="color: green; margin-left: 5px;">✅</span>';
-
-    // Vérifier si l'élément existe déjà pour éviter les doublons
-    var existingElement = document.getElementById('rs2kTextDiv');
-    if (existingElement) {
-      existingElement.innerHTML = rs2kTextDiv.innerHTML;
-    } else {
-      rs2kTextDiv.id = 'rs2kTextDiv';
-      document.body.appendChild(rs2kTextDiv);
-    }
-  }
-
-  // Générer le code automatiquement
-  function generateCode() {
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var codeLength = 6;
-    var code = '';
-    for (var i = 0; i < codeLength; i++) {
-      code += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return code;
-  }
-
-  updateText(); // Mettre à jour le texte une première fois
-
-  // Mettre à jour le texte toutes les minutes
-  setInterval(function() {
-    updateText();
-  }, 60000); // 60000 millisecondes = 1 minute
-})();
 // Fonction pour enregistrer l'état des toggle switches dans le stockage local
 function saveToggleSwitchState() {
     localStorage.setItem('simpleScriptEnabled', simpleScriptEnabled);
